@@ -1,0 +1,22 @@
+import heapq
+
+class Solution(object):
+    def medianSlidingWindow(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[float]
+        """
+        result = []
+
+        for i in range(len(nums) - k + 1):
+            window = sorted(nums[i:i + k])
+
+            if k % 2 == 1:
+                median = float(window[k // 2])
+            else:
+                median = (window[k // 2 - 1] + window[k // 2]) / 2.0
+
+            result.append(median)
+
+        return result
